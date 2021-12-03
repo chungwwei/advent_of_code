@@ -38,14 +38,14 @@ def f(arr):
 	return binary_int_to_decimal(most_common) * binary_int_to_decimal(least_common)
 
 
-def bitCounts(input: list, pos: int) -> int:
+def bit_cnt(input: list, pos: int) -> int:
     return len(list(filter(lambda x: x[pos] == '1', input)))
 
 
-def filterCand(fn, candidates) -> int:
+def filter_cand(fn, candidates) -> int:
     n = 0
     while len(candidates) > 1:
-        if fn(bitCounts(candidates, n) * 2, len(candidates)):
+        if fn(bit_cnt(candidates, n) * 2, len(candidates)):
             candidates = list(filter(lambda x: x[n] == '1', candidates))
         else:
             candidates = list(filter(lambda x: x[n] == '0', candidates))
@@ -55,8 +55,8 @@ def filterCand(fn, candidates) -> int:
 
 
 def f2(arr):
-    a = filterCand(lambda a, b: a >= b, arr)
-    b = filterCand(lambda a, b: a < b, arr)
+    a = filter_cand(lambda a, b: a >= b, arr)
+    b = filter_cand(lambda a, b: a < b, arr)
 
     return a * b
 
